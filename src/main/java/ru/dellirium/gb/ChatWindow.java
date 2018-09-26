@@ -13,17 +13,30 @@ public class ChatWindow extends JFrame {
     private String chatText = titleText;
 
     public ChatWindow() {
+
+        /*
+          Основное окно
+         */
+
         setTitle("Simple chat");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setBounds(300, 300, 400, 400);
 
         setLayout(new BorderLayout());
 
+        /*
+          Поле для ввода текста
+         */
+
         JPanel chatWindow = new JPanel();
         chatWindow.setLayout(new BorderLayout());
         final JTextField chatTextArea = new JTextField("Lorem Ipsum Dolor Set Amet");
         JScrollPane chatScrollPane = new JScrollPane(chatTextArea);
         chatWindow.add(chatScrollPane);
+
+        /*
+          Окно с чатом
+         */
 
         JPanel htmlPanel = new JPanel();
         htmlLabel = new JLabel();
@@ -33,7 +46,7 @@ public class ChatWindow extends JFrame {
         chatTextArea.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(!chatTextArea.getText().equals("")){
+                if(!chatTextArea.getText().equals("")){ // Если поле пустое, то ничего не делаем
                     chatText += "<p>" + chatTextArea.getText() + "</p>";
                     htmlLabel.setText(chatText + "</body></html>");
                     chatTextArea.setText("");
